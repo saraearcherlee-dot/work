@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sara Archer-Lee</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --text: #111;
+    --muted: #555;
+    --link: #111;
+    --col-gap: 40px;
+    --side-pad: 20px;
+  }
+
+  body {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text);
+    background: #fff;
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 14px var(--side-pad);
+    background: #fff;
+    z-index: 100;
+    border-bottom: 1px solid transparent;
+  }
+
+  header .left { display: flex; flex-direction: column; gap: 2px; }
+  header .name {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+  header nav {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+  header nav a {
+    color: var(--text);
+    text-decoration: none;
+    margin-left: 24px;
+  }
+  header nav a:hover { text-decoration: underline; }
+
+  /* ── MAIN LAYOUT ── */
+  main {
+    padding-top: 52px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+  }
+
+  /* ── COLUMN HEADERS ── */
+  .col-header {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    padding: 14px var(--side-pad) 10px;
+    display: none;
+  }
+
+  /* ── DIVIDER between columns ── */
+  .col-left { border-right: 1px solid #e0e0e0; }
+
+  /* ── PROJECT ENTRIES ── */
+  .project {
+    padding: 0 var(--side-pad) 40px;
+  }
+
+  .project-img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .project-client {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 11.5px;
+    color: var(--muted);
+    margin-bottom: 2px;
+  }
+
+  .project-title {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 6px;
+  }
+
+  .project-credits {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 11.5px;
+    color: var(--muted);
+    margin-bottom: 6px;
+    line-height: 1.6;
+  }
+
+  .project-desc {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 11.5px;
+    color: #333;
+    max-width: 380px;
+    margin-bottom: 8px;
+    line-height: 1.55;
+  }
+
+  .project-link {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 11.5px;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .project-link:hover { text-decoration: underline; }
+
+  /* ── FOOTER ── */
+  footer {
+    grid-column: 1 / -1;
+    border-top: 1px solid #e0e0e0;
+    padding: 12px var(--side-pad);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  /* ── CONTACT SECTION ── */
+  #contact {
+    grid-column: 1 / -1;
+    padding: 40px var(--side-pad) 20px;
+    border-top: 1px solid #e0e0e0;
+  }
+  #contact h2 {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  #contact p, #contact a {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    color: var(--text);
+    text-decoration: none;
+    display: block;
+    line-height: 1.8;
+  }
+  #contact a:hover { text-decoration: underline; }
+
+  @media (max-width: 700px) {
+    main { grid-template-columns: 1fr; }
+    .col-left { border-right: none; border-bottom: 1px solid #e0e0e0; }
+    .col-header { position: static; }
+    header { flex-direction: column; gap: 6px; }
+    header nav a:first-child { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="left">
+    <span class="name">Sara Archer-Lee</span>
+  </div>
+  <nav>
+    <a href="#brand">Brand Content</a>
+    <a href="#film">Film</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ════════════════ LEFT: BRAND CONTENT ════════════════ -->
+  <div class="col-left">
+    <div class="col-header" id="brand">Brand Content</div>
+
+    <!-- 1. Guardian Labs x Cadbury -->
+    <div class="project">
+      <img class="project-img"
+           src="Screenshot_2026-05-13_at_12_28_30.png"
+           alt="Guardian Labs x Cadbury – Beautiful Game">
+      <div class="project-client">Guardian Labs x Cadbury</div>
+      <div class="project-title">Beautiful Game: a team brought together by British Sign Language</div>
+      <div class="project-desc">Three teammates from St John's Deaf Ladies Football Club on how learning a little bit of British Sign Language can make a big difference.</div>
+      <a class="project-link" href="https://www.youtube.com/watch?v=AB_kITgj9DI&t=1s" target="_blank" rel="noopener">[Watch..]</a>
+    </div>
+
+    <!-- 2. Guardian Labs x Dept for Education -->
+    <div class="project">
+      <img class="project-img"
+           src="Screenshot_2026-05-13_at_12_49_31.png"
+           alt="Guardian Labs x Department for Education">
+      <div class="project-client">Guardian Labs x Department for Education</div>
+      <div class="project-title">A day in the life of a further education teacher</div>
+      <div class="project-desc">A master carpenter reveals what it's like being a further education teacher.</div>
+      <a class="project-link" href="https://www.youtube.com/watch?v=uF7oIhU7RzE" target="_blank" rel="noopener">[Watch..]</a>
+    </div>
+
+    <!-- 3. Guardian Labs x Barclays -->
+    <div class="project">
+      <img class="project-img"
+           src="Screenshot_2026-05-13_at_12_47_12.png"
+           alt="Guardian Labs x Barclays – Building a more resilient supply chain">
+      <div class="project-client">Guardian Labs x Barclays</div>
+      <div class="project-title">Building a more resilient supply chain in the UK</div>
+      <div class="project-desc">How a vertical-growing salad farm scaled up.</div>
+      <a class="project-link" href="https://www.youtube.com/watch?v=rh8Kqn-9QMA" target="_blank" rel="noopener">[Watch..]</a>
+    </div>
+
+    <!-- 4. Lonelyleap x Google -->
+    <div class="project">
+      <img class="project-img"
+           src="BIL.jpeg"
+           alt="Lonelyleap x Google – Be Internet Legends">
+      <div class="project-client">Lonelyleap x Google</div>
+      <div class="project-title">Be Internet Legends</div>
+      <div class="project-desc">Be Internet Legends empowers younger children to use the web safely and wisely so they can be confident explorers of the online world.</div>
+      <a class="project-link" href="https://www.youtube.com/watch?v=Ntg5ca5aE5U" target="_blank" rel="noopener">[Watch..]</a>
+    </div>
+
+    <!-- 5. Somesuch x Carling -->
+    <div class="project">
+      <img class="project-img"
+           src="Carling_football.png"
+           alt="Somesuch x Carling – Made Local">
+      <div class="project-client">Somesuch x Carling</div>
+      <div class="project-title">Carling Made Local, Casting</div>
+      <div class="project-desc">Made Local is about supporting those people who are making things happen in their hometown.</div>
+      <a class="project-link" href="https://www.youtube.com/watch?v=uar1AIDVf1w" target="_blank" rel="noopener">[Watch..]</a>
+    </div>
+
+    <!-- 6. Lonelyleap x National Portrait Gallery -->
+    <div class="project">
+      <img class="project-img"
+           src="Miseon_1__high_res_pulled_from_film_.jpeg"
+           alt="Lonelyleap x National Portrait Gallery – Portrait of an Artist">
+      <div class="project-client">Lonelyleap x National Portrait Gallery</div>
+      <div class="project-title">Portrait of an Artist</div>
+      <div class="project-desc">Portrait of an artist brings together artist and sitter, who talk deeply about their deeply personal experiences behind their paintings.</div>
+      <a class="project-link" href="https://lonelyleap.com/work/portrait-of-an-artist" target="_blank" rel="noopener">[Watch..]</a>
+    </div>
+
+  </div>
+
+  <!-- ════════════════ RIGHT: FILM ════════════════ -->
+  <div>
+    <div class="col-header" id="film">Film</div>
+
+    <!-- 1. The Rev -->
+    <div class="project">
+      <img class="project-img"
+           src="2021__05__09__THE_REV-Ines_Hachou_222_Jack_Holden__Rev___1_.jpg"
+           alt="The Rev">
+      <div class="project-client">The Rev</div>
+      <div class="project-credits">
+        Director, Fabia Martin<br>
+        Producers, Sara Archer &amp; Emma Wellbelove<br>
+        Featuring Jack Holden<br>
+        Iris Prize winner
+      </div>
+      <div class="project-desc">A queer comedy about a vicar in the midst of an identity crisis whose imagination runs wild when he's asked to organise a funeral.</div>
+      <a class="project-link" href="https://filmlondon.org.uk/film-library/the-rev" target="_blank" rel="noopener">[Watch..]</a>
+    </div>
+
+    <!-- 2. Don't Go Gentle: IDLES -->
+    <div class="project">
+      <img class="project-img"
+           src="idles.jpeg"
+           alt="Don't Go Gentle: A Film about IDLES">
+      <div class="project-client">Don't Go Gentle: A Film about IDLES</div>
+      <div class="project-credits">
+        Director, Mark Archer<br>
+        Producers, Sara Archer, Andy Stewart, Lindsay Melbourne
+      </div>
+      <div class="project-desc">Don't Go Gentle is a film about finding strength in vulnerability. It journeys through IDLES' determination and friendship as they unify an international community along the way.</div>
+      <a class="project-link" href="https://www.youtube.com/watch?v=_2a0W3-nulA" target="_blank" rel="noopener">[Trailer..]</a>
+    </div>
+
+    <!-- 3. The Reason I Jump -->
+    <div class="project">
+      <img class="project-img"
+           src="RIJ_2.jpeg"
+           alt="The Reason I Jump">
+      <div class="project-client">The Reason I Jump</div>
+      <div class="project-credits">Development Producer</div>
+      <div class="project-desc">Based on the bestselling book by Naoki Higashida, 'The Reason I Jump' is an immersive cinematic exploration of neurodiversity through the experiences of nonspeaking autistic people from around the world.</div>
+      <a class="project-link" href="https://tv.apple.com/gb/movie/the-reason-i-jump/umc.cmc.5ron7jc1n7g6209oo0e5isz02" target="_blank" rel="noopener">[Watch..]</a>
+    </div>
+
+    <!-- 4. Bill & Gordon -->
+    <div class="project">
+      <img class="project-img"
+           src="Bill---G-2.jpeg"
+           alt="Bill &amp; Gordon">
+      <div class="project-client">Bill &amp; Gordon</div>
+      <div class="project-credits">Director, Producer</div>
+      <div class="project-desc">Two friends in their eighties, living and working in Angel. In the 60s Camden Passage was the epicentre for antiques trading in London. Bill and Gordon explain starkly how this has changed and the impact on the area.</div>
+      <a class="project-link" href="https://vimeo.com/164109157?share=copy&fl=sv&fe=ci" target="_blank" rel="noopener">[Watch..]</a>
+    </div>
+
+  </div>
+
+  <!-- ════════════════ CONTACT ════════════════ -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Sara Archer-Lee</p>
+    <a href="mailto:saraearcherlee@gmail.com">saraearcherlee@gmail.com</a>
+    <a href="https://www.instagram.com/sarcher88/" target="_blank" rel="noopener">@sarcher88</a>
+    <a href="https://www.instagram.com/slow.listen/" target="_blank" rel="noopener">@slow.listen</a>
+  </section>
+
+  <footer>
+    <span>Sara Archer-Lee</span>
+    <a href="#brand">↑ Top</a>
+  </footer>
+
+</main>
+
+</body>
+</html>
