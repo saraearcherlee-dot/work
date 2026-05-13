@@ -8,28 +8,13 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   :root { --text: #111; --muted: #555; --side-pad: 20px; }
   body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; line-height: 1.5; color: var(--text); background: #fff; overflow: hidden; }
-  header { position: fixed; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: flex-start; padding: 14px var(--side-pad); background: #fff; z-index: 100; }
+  header { position: fixed; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 14px var(--side-pad); background: #fff; z-index: 100; }
   header .name { font-size: 12px; font-weight: 400; letter-spacing: 0.03em; text-transform: uppercase; }
   header nav a { color: var(--text); text-decoration: none; font-size: 12px; letter-spacing: 0.03em; text-transform: uppercase; }
   header nav a:hover { text-decoration: underline; }
-  main {
-    position: fixed;
-    top: 44px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-  .col-left {
-    border-right: 1px solid #e0e0e0;
-    overflow-y: auto;
-    height: 100%;
-  }
-  .col-right {
-    overflow-y: auto;
-    height: 100%;
-  }
+  main { position: fixed; top: 44px; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: 1fr 1fr; }
+  .col-left { border-right: 1px solid #e0e0e0; overflow-y: auto; height: 100%; }
+  .col-right { overflow-y: auto; height: 100%; }
   .col-header { font-size: 12px; font-weight: 400; letter-spacing: 0.03em; text-transform: uppercase; padding: 14px var(--side-pad) 10px; position: sticky; top: 0; background: #fff; z-index: 10; }
   .project { padding: 0 var(--side-pad) 40px; }
   .project-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; margin-bottom: 10px; }
@@ -39,12 +24,13 @@
   .project-desc { font-size: 11.5px; color: #333; max-width: 380px; margin-bottom: 8px; line-height: 1.55; }
   .project-link { font-size: 11.5px; color: var(--text); text-decoration: none; }
   .project-link:hover { text-decoration: underline; }
-  .col-footer { padding: 12px var(--side-pad); border-top: 1px solid #e0e0e0; font-size: 11px; color: var(--muted); }
-  .col-footer a { color: var(--muted); text-decoration: none; }
-  .col-footer a:hover { text-decoration: underline; }
+  .col-footer { padding: 12px var(--side-pad) 24px; font-size: 11px; color: var(--muted); border-top: 1px solid #e0e0e0; }
+  .col-footer button { background: none; border: none; font-family: inherit; font-size: 11px; color: var(--muted); cursor: pointer; padding: 0; }
+  .col-footer button:hover { text-decoration: underline; }
   #contact { padding: 20px var(--side-pad) 40px; }
   #contact h2 { font-size: 12px; font-weight: 400; letter-spacing: 0.03em; text-transform: uppercase; margin-bottom: 10px; }
-  #contact p, #contact a { font-size: 12px; color: var(--text); text-decoration: none; display: block; line-height: 1.8; }
+  #contact .tagline { font-size: 12px; color: var(--text); margin-bottom: 6px; font-style: italic; }
+  #contact a { font-size: 12px; color: var(--text); text-decoration: none; display: block; line-height: 1.8; }
   #contact a:hover { text-decoration: underline; }
   @media (max-width: 700px) {
     body { overflow: auto; }
@@ -101,7 +87,8 @@
     <div class="project">
       <img class="project-img" src="carling.png" alt="Somesuch x Carling">
       <div class="project-client">Somesuch x Carling</div>
-      <div class="project-title">Carling Made Local, Casting</div>
+      <div class="project-title">Carling Made Local</div>
+      <div class="project-credits">Casting Producer</div>
       <div class="project-desc">Made Local is about supporting those people who are making things happen in their hometown.</div>
       <a class="project-link" href="https://www.youtube.com/watch?v=uar1AIDVf1w" target="_blank" rel="noopener">[Watch..]</a>
     </div>
@@ -110,12 +97,12 @@
       <img class="project-img" src="portrait.jpeg" alt="Lonelyleap x National Portrait Gallery">
       <div class="project-client">Lonelyleap x National Portrait Gallery</div>
       <div class="project-title">Portrait of an Artist</div>
-      <div class="project-desc">Portrait of an artist brings together artist and sitter, who talk deeply about their deeply personal experiences behind their paintings.</div>
+      <div class="project-desc">Portrait of an Artist brings together artist and sitter, who talk deeply about the personal experiences behind their paintings.</div>
       <a class="project-link" href="https://lonelyleap.com/work/portrait-of-an-artist" target="_blank" rel="noopener">[Watch..]</a>
     </div>
 
     <div class="col-footer">
-      <a href="#brand-col">↑ Top</a>
+      <button onclick="document.getElementById('brand-col').scrollTo({top: 0, behavior: 'smooth'})">↑ Top</button>
     </div>
 
   </div>
@@ -159,13 +146,13 @@
       <img class="project-img" src="billandgordon.jpeg" alt="Bill and Gordon">
       <div class="project-client">Bill &amp; Gordon</div>
       <div class="project-credits">Director, Producer</div>
-      <div class="project-desc">Two friends in their eighties, living and working in Angel. In the 60s Camden Passage was the epicentre for antiques trading in London. Bill and Gordon explain starkly how this has changed and the impact on the area.</div>
+      <div class="project-desc">Two friends in their eighties, living and working in Angel. In the 60s Camden Passage was the epicentre for antiques trading in London. Bill and Gordon reflect on how this has changed and what it means for the area.</div>
       <a class="project-link" href="https://vimeo.com/164109157" target="_blank" rel="noopener">[Watch..]</a>
     </div>
 
     <section id="contact">
       <h2>Contact</h2>
-      <p>Sara Archer-Lee</p>
+      <p class="tagline">Producer bringing unheard stories to screen.</p>
       <a href="mailto:saraearcherlee@gmail.com">saraearcherlee@gmail.com</a>
       <a href="https://www.instagram.com/sarcher88/" target="_blank" rel="noopener">@sarcher88</a>
       <a href="https://www.instagram.com/slow.listen/" target="_blank" rel="noopener">@slow.listen</a>
