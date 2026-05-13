@@ -6,179 +6,65 @@
 <title>Sara Archer-Lee</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  :root {
-    --text: #111;
-    --muted: #555;
-    --link: #111;
-    --col-gap: 40px;
-    --side-pad: 20px;
-  }
-
-  body {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 13px;
-    line-height: 1.5;
-    color: var(--text);
-    background: #fff;
-  }
-
-  header {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 14px var(--side-pad);
-    background: #fff;
-    z-index: 100;
-  }
-
-  header .left { display: flex; flex-direction: column; gap: 2px; }
-  header .name {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 12px;
-    font-weight: 400;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-  }
-  header nav {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 12px;
-    font-weight: 400;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-  }
-  header nav a {
-    color: var(--text);
-    text-decoration: none;
-    margin-left: 24px;
-    cursor: pointer;
-  }
+  :root { --text: #111; --muted: #555; --side-pad: 20px; }
+  body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; line-height: 1.5; color: var(--text); background: #fff; overflow: hidden; }
+  header { position: fixed; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: flex-start; padding: 14px var(--side-pad); background: #fff; z-index: 100; }
+  header .name { font-size: 12px; font-weight: 400; letter-spacing: 0.03em; text-transform: uppercase; }
+  header nav a { color: var(--text); text-decoration: none; font-size: 12px; letter-spacing: 0.03em; text-transform: uppercase; }
   header nav a:hover { text-decoration: underline; }
-
   main {
-    padding-top: 52px;
+    position: fixed;
+    top: 44px;
+    left: 0;
+    right: 0;
+    bottom: 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    min-height: 100vh;
   }
-
-  .col-left { border-right: 1px solid #e0e0e0; }
-
-  .project {
-    padding: 0 var(--side-pad) 40px;
+  .col-left {
+    border-right: 1px solid #e0e0e0;
+    overflow-y: auto;
+    height: 100%;
   }
-
-  .project-img {
-    width: 100%;
-    aspect-ratio: 16/9;
-    object-fit: cover;
-    display: block;
-    margin-bottom: 10px;
+  .col-right {
+    overflow-y: auto;
+    height: 100%;
   }
-
-  .project-client {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 11.5px;
-    color: var(--muted);
-    margin-bottom: 2px;
-  }
-
-  .project-title {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 12px;
-    font-weight: 400;
-    margin-bottom: 6px;
-  }
-
-  .project-credits {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 11.5px;
-    color: var(--muted);
-    margin-bottom: 6px;
-    line-height: 1.6;
-  }
-
-  .project-desc {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 11.5px;
-    color: #333;
-    max-width: 380px;
-    margin-bottom: 8px;
-    line-height: 1.55;
-  }
-
-  .project-link {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 11.5px;
-    color: var(--text);
-    text-decoration: none;
-  }
+  .col-header { font-size: 12px; font-weight: 400; letter-spacing: 0.03em; text-transform: uppercase; padding: 14px var(--side-pad) 10px; position: sticky; top: 0; background: #fff; z-index: 10; }
+  .project { padding: 0 var(--side-pad) 40px; }
+  .project-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; margin-bottom: 10px; }
+  .project-client { font-size: 11.5px; color: var(--muted); margin-bottom: 2px; }
+  .project-title { font-size: 12px; font-weight: 400; margin-bottom: 6px; }
+  .project-credits { font-size: 11.5px; color: var(--muted); margin-bottom: 6px; line-height: 1.6; }
+  .project-desc { font-size: 11.5px; color: #333; max-width: 380px; margin-bottom: 8px; line-height: 1.55; }
+  .project-link { font-size: 11.5px; color: var(--text); text-decoration: none; }
   .project-link:hover { text-decoration: underline; }
-
-  footer {
-    grid-column: 1 / -1;
-    border-top: 1px solid #e0e0e0;
-    padding: 12px var(--side-pad);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 11px;
-    color: var(--muted);
-  }
-  footer a { color: var(--muted); text-decoration: none; }
-  footer a:hover { text-decoration: underline; }
-
-  #contact {
-    grid-column: 1 / -1;
-    padding: 40px var(--side-pad) 20px;
-    border-top: 1px solid #e0e0e0;
-  }
-  #contact h2 {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 12px;
-    font-weight: 400;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-  #contact p, #contact a {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 12px;
-    color: var(--text);
-    text-decoration: none;
-    display: block;
-    line-height: 1.8;
-  }
+  .col-footer { padding: 12px var(--side-pad); border-top: 1px solid #e0e0e0; font-size: 11px; color: var(--muted); }
+  .col-footer a { color: var(--muted); text-decoration: none; }
+  .col-footer a:hover { text-decoration: underline; }
+  #contact { padding: 20px var(--side-pad) 40px; }
+  #contact h2 { font-size: 12px; font-weight: 400; letter-spacing: 0.03em; text-transform: uppercase; margin-bottom: 10px; }
+  #contact p, #contact a { font-size: 12px; color: var(--text); text-decoration: none; display: block; line-height: 1.8; }
   #contact a:hover { text-decoration: underline; }
-
   @media (max-width: 700px) {
-    main { grid-template-columns: 1fr; }
-    .col-left { border-right: none; border-bottom: 1px solid #e0e0e0; }
+    body { overflow: auto; }
+    main { position: static; display: block; padding-top: 44px; }
+    .col-left, .col-right { height: auto; overflow: visible; border-right: none; border-bottom: 1px solid #e0e0e0; }
     header { flex-direction: column; gap: 6px; }
-    header nav a:first-child { margin-left: 0; }
   }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="left">
-    <span class="name">Sara Archer-Lee</span>
-  </div>
-  <nav>
-    <a href="#brand-col">Brand Content</a>
-    <a href="#film-col">Film</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <span class="name">Sara Archer-Lee</span>
+  <nav><a href="#contact">Contact</a></nav>
 </header>
 
 <main>
 
   <div class="col-left" id="brand-col">
+    <div class="col-header">Brand Content</div>
 
     <div class="project">
       <img class="project-img" src="cadbury.png" alt="Guardian Labs x Cadbury">
@@ -205,7 +91,7 @@
     </div>
 
     <div class="project">
-      <img class="project-img" src="BIL.jpeg" alt="Lonelyleap x Google – Be Internet Legends">
+      <img class="project-img" src="BIL.jpeg" alt="Lonelyleap x Google">
       <div class="project-client">Lonelyleap x Google</div>
       <div class="project-title">Be Internet Legends</div>
       <div class="project-desc">Be Internet Legends empowers younger children to use the web safely and wisely so they can be confident explorers of the online world.</div>
@@ -213,7 +99,7 @@
     </div>
 
     <div class="project">
-      <img class="project-img" src="Carling_football.png" alt="Somesuch x Carling">
+      <img class="project-img" src="carling.png" alt="Somesuch x Carling">
       <div class="project-client">Somesuch x Carling</div>
       <div class="project-title">Carling Made Local, Casting</div>
       <div class="project-desc">Made Local is about supporting those people who are making things happen in their hometown.</div>
@@ -228,9 +114,14 @@
       <a class="project-link" href="https://lonelyleap.com/work/portrait-of-an-artist" target="_blank" rel="noopener">[Watch..]</a>
     </div>
 
+    <div class="col-footer">
+      <a href="#brand-col">↑ Top</a>
+    </div>
+
   </div>
 
-  <div id="film-col">
+  <div class="col-right" id="film-col">
+    <div class="col-header">Film</div>
 
     <div class="project">
       <img class="project-img" src="therev.jpg" alt="The Rev">
@@ -257,7 +148,7 @@
     </div>
 
     <div class="project">
-      <img class="project-img" src="RIJ_2.jpeg" alt="The Reason I Jump">
+      <img class="project-img" src="rij.jpeg" alt="The Reason I Jump">
       <div class="project-client">The Reason I Jump</div>
       <div class="project-credits">Development Producer</div>
       <div class="project-desc">Based on the bestselling book by Naoki Higashida, 'The Reason I Jump' is an immersive cinematic exploration of neurodiversity through the experiences of nonspeaking autistic people from around the world.</div>
@@ -265,27 +156,22 @@
     </div>
 
     <div class="project">
-      <img class="project-img" src="billandgordon.jpeg" alt="Bill &amp; Gordon">
+      <img class="project-img" src="billandgordon.jpeg" alt="Bill and Gordon">
       <div class="project-client">Bill &amp; Gordon</div>
       <div class="project-credits">Director, Producer</div>
       <div class="project-desc">Two friends in their eighties, living and working in Angel. In the 60s Camden Passage was the epicentre for antiques trading in London. Bill and Gordon explain starkly how this has changed and the impact on the area.</div>
       <a class="project-link" href="https://vimeo.com/164109157" target="_blank" rel="noopener">[Watch..]</a>
     </div>
 
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Sara Archer-Lee</p>
+      <a href="mailto:saraearcherlee@gmail.com">saraearcherlee@gmail.com</a>
+      <a href="https://www.instagram.com/sarcher88/" target="_blank" rel="noopener">@sarcher88</a>
+      <a href="https://www.instagram.com/slow.listen/" target="_blank" rel="noopener">@slow.listen</a>
+    </section>
+
   </div>
-
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Sara Archer-Lee</p>
-    <a href="mailto:saraearcherlee@gmail.com">saraearcherlee@gmail.com</a>
-    <a href="https://www.instagram.com/sarcher88/" target="_blank" rel="noopener">@sarcher88</a>
-    <a href="https://www.instagram.com/slow.listen/" target="_blank" rel="noopener">@slow.listen</a>
-  </section>
-
-  <footer>
-    <span>Sara Archer-Lee</span>
-    <a href="#brand-col">↑ Top</a>
-  </footer>
 
 </main>
 </body>
